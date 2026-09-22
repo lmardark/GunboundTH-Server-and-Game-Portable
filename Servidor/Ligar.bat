@@ -111,9 +111,8 @@ mkdir c:\GBTH
 
 ::echo %ip%> c:\GBTH\IP.txt
 
-if not exist c:\GBTH\mod_index.so (
-copy HTTP\modules\mod_index.so c:\GBTH\
-)
+copy /Y HTTP\modules\mod_index.so c:\GBTH\ >nul
+copy /Y HTTP\client\JogarLinux.sh c:\GBTH\ >nul
 if not exist HTTP\client\ZIP_GunboundCliente.zip (
 "%ProgramFiles%\WinRAR\UnRAR.exe" x -c- -cfg- -inul -o+ -y "HTTP\client\client.part01.rar" "HTTP\client\"
 "%ProgramFiles(x86)%\WinRAR\UnRAR.exe" x -c- -cfg- -inul -o+ -y "HTTP\client\client.part01.rar" "HTTP\client\"

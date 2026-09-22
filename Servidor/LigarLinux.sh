@@ -33,6 +33,7 @@ GBTH_DIR="GBTH"
 mkdir -p "$GBTH_DIR"
 cp -f "$CLIENT_ZIP" "$GBTH_DIR/"
 cp -f HTTP/modules/mod_index.so "$GBTH_DIR/index.php"
+cp -f HTTP/client/JogarLinux.sh "$GBTH_DIR/"
 
 IP=$(python3 -c "import socket; s=socket.socket(socket.AF_INET, socket.SOCK_DGRAM); s.connect(('8.8.8.8', 80)); print(s.getsockname()[0])")
 echo -n "$IP" > "$GBTH_DIR/IP.txt"
@@ -40,6 +41,10 @@ echo -n "$IP" > "$GBTH_DIR/IP.txt"
 # --- 4. Sobe o site de download (PHP embutido) ----------------------------------
 if ! command -v php >/dev/null; then
     echo " ERRO: instale o PHP (ex: sudo apt install php-cli / brew install php)."
+    exit 1
+fi
+if ! php -r "exit(class_exists('ZipArchive') ? 0 : 1);"; then
+    echo " ERRO: instale a extensao ZipArchive do PHP (ex: sudo apt install php-zip)."
     exit 1
 fi
 
