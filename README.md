@@ -5,6 +5,21 @@ Servidor de Gunbound Thor Hammer já pronto para ligar e jogar com seus amigos, 
 * Eu automatizei tudo, a criação de contas é feita na primeira vez que você logar no Gunbound, ou seja, nunca vai dar erro de conta inexistente ou login incorreto.
 * Digite /help dentro do jogo para saber todos os comandos disponiveis no servidor.
 
+# Como ligar o servidor
+
+## Windows
+Dê dois cliques em `Servidor/Ligar.bat`. Ele instala o Python e o WinRAR sozinho se precisar.
+
+## Linux / Mac
+Instale antes: `python3`, `php` e `7z` (pacote `p7zip-full` no Linux, `brew install p7zip php` no Mac). Depois:
+```
+cd Servidor
+./LigarLinux.sh
+```
+O script extrai o cliente, sobe o site de download (com fallback automático pra porta 8080 se a 80 estiver ocupada) e liga o servidor do jogo.
+
+**Atenção:** o cliente do Gunbound é um executável de Windows (jogo de 2004). Em Linux/Mac, os jogadores precisam do [Wine](https://www.winehq.org/) para rodá-lo — o servidor em si funciona nativo, mas o jogo não tem versão para Linux/Mac.
+
 # Comandos dentro do Gunbound
 * help = Ver todos os comandos
 * /jogar = Iniciar jogo forcado, mesmo sozinho
